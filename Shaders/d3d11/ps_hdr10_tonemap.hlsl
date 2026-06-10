@@ -273,6 +273,7 @@ float4 main(PS_INPUT input) : SV_Target
 {
 	// Sample texture and convert from PQ to linear
 	float4 color = tex.Sample(samp, input.Tex);
+    color = saturate(color);
 	color = ST2084ToLinear(color, 10000.0f); // Convert PQ to Linear space
 
 	if (L2Enabled)
